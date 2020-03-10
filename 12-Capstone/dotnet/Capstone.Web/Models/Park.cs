@@ -37,6 +37,7 @@ namespace Capstone.Web.Models
 
         public int NumberOfAnimalSpecies { get; set; }
 
+        public Weather Weather { get; set; }
 
     }
 }

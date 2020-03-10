@@ -71,6 +71,12 @@ namespace Capstone.Web.DAL
             return GetAllParks().FirstOrDefault(p => p.ParkCode == parkCode);
         }
 
+
+        
+
+
+        
+
     }
 
 }
