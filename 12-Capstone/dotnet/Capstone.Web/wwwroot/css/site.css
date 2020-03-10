@@ -28,6 +28,16 @@ body {
     margin: 15px;
 }
 
+.front-page-description {
+    display: inline-block;
+    width: 50%;
+
+}
+
+#logo {
+    width: 500px;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
