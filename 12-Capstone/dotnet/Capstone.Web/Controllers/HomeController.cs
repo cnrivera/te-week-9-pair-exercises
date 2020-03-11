@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Capstone.Web.Models;
 using Capstone.Web.DAL;
+using Microsoft.AspNetCore.Http;
+using SessionCart.Web.Extensions;
 
 namespace Capstone.Web.Controllers
 {
@@ -28,23 +30,32 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
         
+        [HttpGet]
         public IActionResult Detail(string parkCode)
         {
             Park detail = parkDAO.GetPark(parkCode);
-            
+            bool isFarenheit = HttpContext.Session.Get<bool>("isFarenheit");
+
+            if(isFarenheit != null && isFarenheit == false)
+            {
+                foreach(Weather w in detail.WeatherList)
+                {
+                    w.IsFarenheit = false;
+                }
+            }
+
             return View(detail);
         }
 
-        //public IActionResult GetParkWeather()
-        //{
-        //    var weather = parkDAO.GetWeatherForASinglePark;
-           
-        //    Park newPark = new Park();
-        //    newPark.WeatherList = weather;
-        //    return View("Detail",newPark);
-        //}
-     
 
+        [HttpGet]
+        public IActionResult SwitchTemperatureType(string parkCode)
+        {
+            bool isFarenheit = HttpContext.Session.Get<bool>("isFarenheit");
+            HttpContext.Session.Set("isFarenheit", !isFarenheit);
+
+            return RedirectToAction("Detail","Home", new { parkCode = parkCode });
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
