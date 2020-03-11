@@ -9,6 +9,7 @@ namespace Capstone.Web.DAL
     public interface IWeatherDAO
     {
         IList<Weather> GetWeather();
+
     
 
     }

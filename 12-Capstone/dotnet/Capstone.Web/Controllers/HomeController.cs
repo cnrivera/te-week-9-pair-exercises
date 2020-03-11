@@ -16,7 +16,10 @@ namespace Capstone.Web.Controllers
         public HomeController(IParksDAO parkDAO)
         {
             this.parkDAO = parkDAO;
+            
+            
         }
+
 
         [HttpGet]
         public IActionResult Index()
@@ -28,11 +31,17 @@ namespace Capstone.Web.Controllers
         public IActionResult Detail(string parkCode)
         {
             Park detail = parkDAO.GetPark(parkCode);
+            
             return View(detail);
         }
 
+        public IActionResult Weather(Weather weatherStatus)
+        {
+            var weather = WeatherSqlDAO.Get
+        }
+     
 
-      
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

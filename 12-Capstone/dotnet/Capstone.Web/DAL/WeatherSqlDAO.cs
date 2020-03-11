@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Web.DAL
 {
-    public class WeatherSqlDAO
+    public class WeatherSqlDAO : IWeatherDAO
     {
         private readonly string connectionString;
 
@@ -15,9 +15,8 @@ namespace Capstone.Web.DAL
         {
             this.connectionString = connectionString;
         }
-        public List<Weather> GetWeather()
+        public IList<Weather> GetWeather()
         {
-
             IList<Weather> weatherList = new List<Weather>();
 
             try
@@ -37,7 +36,6 @@ namespace Capstone.Web.DAL
                             Low = Convert.ToInt32(reader["low"]),
                             High = Convert.ToInt32(reader["high"]),
                             Forecast = Convert.ToString(reader["forecast"]),
-
 
                         };
                         weatherList.Add(weather);
