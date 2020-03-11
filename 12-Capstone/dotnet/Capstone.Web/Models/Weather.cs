@@ -18,9 +18,9 @@ namespace Capstone.Web.Models
 
         public string Forecast { get; set; }
 
-        public bool IsFarenheit { get; set; }
+        public bool IsFarenheit { get; set; } = true;
 
-        public int DisplayCelsiusLow
+        public int DisplayLow
         {
             get
             {
@@ -34,7 +34,7 @@ namespace Capstone.Web.Models
                 }
             }
         }
-        public int DisplayCelsiusHigh
+        public int DisplayHigh
         {
             get
             {
@@ -59,5 +59,4 @@ namespace Capstone.Web.Models
        
 
 
-    }
-}
+

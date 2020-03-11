@@ -23,7 +23,7 @@
             <p>@Model.InspirationalQuoteSource</p>
             <p>@Model.EntryFee</p>
             <p>@Model.NumberOfAnimalSpecies</p>
-            
+
 
 
         </div>
@@ -32,10 +32,14 @@
             @foreach (var detail in Model.WeatherList)
             {
                 <p>@detail.FiveDayForecastValue;</p>
-                <p>@detail.Low;</p>
-                <p>@detail.High;</p>
+                <p>@detail.DisplayLow;</p>
+                <p>@detail.DisplayHigh;</p>
                 <p>@detail.Forecast;</p>
             }
         </div>
+        <form asp-action="SwitchTemperatureType" asp-controller="Home" method="post">
+            <input type="hidden" value="@Model.ParkCode" name="parkCode" />
+            <input type="submit" value="Switch Temperature Type" />
+        </form>
     </div>
 

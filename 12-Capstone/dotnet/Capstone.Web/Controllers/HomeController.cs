@@ -34,9 +34,10 @@ namespace Capstone.Web.Controllers
         public IActionResult Detail(string parkCode)
         {
             Park detail = parkDAO.GetPark(parkCode);
+
             bool isFarenheit = HttpContext.Session.Get<bool>("isFarenheit");
 
-            if(isFarenheit != null && isFarenheit == false)
+            if(isFarenheit == false)
             {
                 foreach(Weather w in detail.WeatherList)
                 {
@@ -48,7 +49,7 @@ namespace Capstone.Web.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult SwitchTemperatureType(string parkCode)
         {
             bool isFarenheit = HttpContext.Session.Get<bool>("isFarenheit");
