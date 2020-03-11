@@ -5,26 +5,37 @@
     
 }
 
-<div>
-    <img src="~/images/@(Model.ParkCode).jpg">
-    
     <div>
-        <h2>@Model.ParkName</h2>
-        <p>@Model.State</p>
-        <p>@Model.ParkDescription</p>
-        <p>@Model.Acreage</p>
-        <p>@Model.ElevationInFeet</p>
-        <p>@Model.MilesOfTrail</p>
-        <p>@Model.NumberOfCampsites</p>
-        <p>@Model.Climate</p>
-        <p>@Model.YearFounded</p>
-        <p>@Model.AnnualVisitorCount</p>
-        <p>@Model.InspirationalQuote</p>
-        <p>@Model.InspirationalQuoteSource</p>
-        <p>@Model.EntryFee</p>
-        <p>@Model.NumberOfAnimalSpecies</p>
-        <p>@Model.Weather</p>
-    
+        <img src="~/images/@(Model.ParkCode).jpg">
+
+        <div>
+            <h2>@Model.ParkName</h2>
+            <p>@Model.State</p>
+            <p>@Model.ParkDescription</p>
+            <p>@Model.Acreage</p>
+            <p>@Model.ElevationInFeet</p>
+            <p>@Model.MilesOfTrail</p>
+            <p>@Model.NumberOfCampsites</p>
+            <p>@Model.Climate</p>
+            <p>@Model.YearFounded</p>
+            <p>@Model.AnnualVisitorCount</p>
+            <p>@Model.InspirationalQuote</p>
+            <p>@Model.InspirationalQuoteSource</p>
+            <p>@Model.EntryFee</p>
+            <p>@Model.NumberOfAnimalSpecies</p>
+            
+
+
+        </div>
+
+        <div>
+            @foreach (var detail in Model.WeatherList)
+            {
+                <p>@detail.FiveDayForecastValue;</p>
+                <p>@detail.Low;</p>
+                <p>@detail.High;</p>
+                <p>@detail.Forecast;</p>
+            }
+        </div>
     </div>
-</div>
 

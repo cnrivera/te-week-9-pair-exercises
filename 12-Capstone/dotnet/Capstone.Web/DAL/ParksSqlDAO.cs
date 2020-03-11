@@ -50,6 +50,7 @@ namespace Capstone.Web.DAL
                             NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]),
 
                         };
+                        park.WeatherList = GetWeatherForASinglePark(park.ParkCode);
                         parks.Add(park);
 
 
@@ -65,6 +66,46 @@ namespace Capstone.Web.DAL
 
 
         }
+
+
+        public IList<Weather> GetWeatherForASinglePark(string parkCode)
+        {
+            IList<Weather> weatherList = new List<Weather>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM weather Where parkCode = @parkCode", conn);
+                    cmd.Parameters.AddWithValue("@parkCode", parkCode);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    
+                    while (reader.Read())
+                    {
+                        Weather weather = new Weather()
+                        {
+                            ParkCode = Convert.ToString(reader["parkCode"]),
+                            FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
+                            Low = Convert.ToInt32(reader["low"]),
+                            High = Convert.ToInt32(reader["high"]),
+                            Forecast = Convert.ToString(reader["forecast"]),
+
+                        };
+                        weatherList.Add(weather);
+
+
+                    }
+                }
+            }
+
+            catch (SqlException ex) //TO DO add ex message
+            {
+                throw;
+            }
+            return weatherList;
+        }
+
 
         public Park GetPark(string parkCode)
         {

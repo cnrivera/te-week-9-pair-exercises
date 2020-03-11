@@ -18,6 +18,8 @@ namespace Capstone.Web.Models
 
         public string Forecast { get; set; }
 
-        
+       
+
+
     }
 }

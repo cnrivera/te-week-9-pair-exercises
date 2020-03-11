@@ -35,10 +35,14 @@ namespace Capstone.Web.Controllers
             return View(detail);
         }
 
-        public IActionResult Weather(Weather weatherStatus)
-        {
-            var weather = WeatherSqlDAO.Get
-        }
+        //public IActionResult GetParkWeather()
+        //{
+        //    var weather = parkDAO.GetWeatherForASinglePark;
+           
+        //    Park newPark = new Park();
+        //    newPark.WeatherList = weather;
+        //    return View("Detail",newPark);
+        //}
      
 
 

@@ -37,7 +37,26 @@ namespace Capstone.Web.Models
 
         public int NumberOfAnimalSpecies { get; set; }
 
-        public IList<Weather> Weather { get; set; }
+        public IList<Weather> WeatherList { get; set; }
+
+        //public List<Weather> DailyWeather
+        //{
+        //    get
+        //    {
+        //        List<Weather> dailyWeather = new List<Weather>();
+        //        while (ParkCode == Weather)
+        //        {
+        //            foreach (Weather detail in WeatherList)
+        //            {
+        //                dailyWeather.Add(detail);
+        //            }
+        //            return dailyWeather;
+        //        }
+        //    }
+
+
+
+        //}
 
     }
 }
