@@ -2,44 +2,87 @@
 
 @{
     ViewData["Title"] = "Detail";
-    
+
 }
 
+<div>
+    <img src="~/images/@(Model.ParkCode).jpg">
+
     <div>
-        <img src="~/images/@(Model.ParkCode).jpg">
-
-        <div>
-            <h2>@Model.ParkName</h2>
-            <p>@Model.State</p>
-            <p>@Model.ParkDescription</p>
-            <p>@Model.Acreage</p>
-            <p>@Model.ElevationInFeet</p>
-            <p>@Model.MilesOfTrail</p>
-            <p>@Model.NumberOfCampsites</p>
-            <p>@Model.Climate</p>
-            <p>@Model.YearFounded</p>
-            <p>@Model.AnnualVisitorCount</p>
-            <p>@Model.InspirationalQuote</p>
-            <p>@Model.InspirationalQuoteSource</p>
-            <p>@Model.EntryFee</p>
-            <p>@Model.NumberOfAnimalSpecies</p>
+        <h2>@Model.ParkName</h2>
+        <p>@Model.State</p>
+        <p>@Model.ParkDescription</p>
+        <p>@Model.Acreage</p>
+        <p>@Model.ElevationInFeet</p>
+        <p>@Model.MilesOfTrail</p>
+        <p>@Model.NumberOfCampsites</p>
+        <p>@Model.Climate</p>
+        <p>@Model.YearFounded</p>
+        <p>@Model.AnnualVisitorCount</p>
+        <p>@Model.InspirationalQuote</p>
+        <p>@Model.InspirationalQuoteSource</p>
+        <p>@Model.EntryFee</p>
+        <p>@Model.NumberOfAnimalSpecies</p>
 
 
 
-        </div>
+    </div>
 
-        <div>
-            @foreach (var detail in Model.WeatherList)
+    <div>
+        @foreach (var detail in Model.WeatherList)
+        {
+            <p>@detail.FiveDayForecastValue</p>
+            <p>@detail.DisplayLow</p>
+            <p>@detail.DisplayHigh</p>
+            <p>@detail.Forecast</p>
+
+            @switch (detail.Forecast)
             {
-                <p>@detail.FiveDayForecastValue;</p>
-                <p>@detail.DisplayLow;</p>
-                <p>@detail.DisplayHigh;</p>
-                <p>@detail.Forecast;</p>
+                case "snow":
+                    <p>Pack snowshoes.</p>
+                    break;
+
+                case "rain":
+                    <p>Pack rain gear and wear waterproof shoes.</p>
+                    break;
+
+                case "thunderstorms":
+                    <p>Seek shelter and avoid hiking on exposed ridges.</p>
+                    break;
+
+                case "sunny":
+                    <p>Pack sunblock.</p>
+                    break;
+
             }
-        </div>
+
+            if (detail.High > 75)
+            {
+                <p>Bring an extra gallon of water.</p>
+            }
+            else if (detail.High - detail.Low == 20)
+            {
+                <p>Wear breathable layers.</p>
+            }
+            else if (detail.Low < 20)
+            {
+                <p>Dangerously low temperatures. Be cautious and stay warm.</p>
+            }
+
+        }
+
+
+    </div>
+
+    <div>
+
+
+
         <form asp-action="SwitchTemperatureType" asp-controller="Home" method="post">
             <input type="hidden" value="@Model.ParkCode" name="parkCode" />
             <input type="submit" value="Switch Temperature Type" />
         </form>
+
+
     </div>
 

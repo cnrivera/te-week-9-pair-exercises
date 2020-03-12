@@ -23,7 +23,7 @@ namespace Capstone.Web.DAL
         Park GetPark(string ParkCode);
 
         /// <summary>
-        /// Gets five day forcast for all parks.
+        /// Gets five day forecast for all parks.
         /// </summary>
         /// <returns></returns>
         ///

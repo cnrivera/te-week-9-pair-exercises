@@ -1,0 +1,59 @@
+﻿@model Survey
+@{
+    ViewData["Title"] = "Index";
+    IList<Park> parkData = (IList<Park>)ViewData["parkData"];
+
+    IList<SelectListItem> parkNames = new List<SelectListItem>();
+
+        foreach (Park park in parkData)
+    {
+        parkNames.Add(new SelectListItem() { Text = park.ParkName, Value = park.ParkCode });
+    }
+
+}
+
+<h1>National Park Survey</h1>
+
+<p>
+    Thank you for visiting National Park Geek. We'd like to know more about the visitors to our parks. Please fill out and submit the survey below.
+</p>
+
+<form asp-controller="Survey" asp-action="NewSurvey" method="post">
+
+    <div>
+        <label asp-for="ParkCode">Favorite National Park</label>
+        <select asp-for="ParkCode" asp-items="parkNames"></select>
+        <span asp-validation-for="ParkCode"></span>
+
+    </div>
+
+    <div>
+        <label asp-for="EmailAddress">Your E-Mail</label>
+        <input asp-for="EmailAddress" placeholder="enter your e-mail" />
+        <span asp-validation-for="EmailAddress"></span>
+
+    </div>
+
+
+    <div>
+        <label asp-for="State">State of Residence</label>
+        <select asp-for="State" asp-items="Survey.states"></select>
+        <span asp-validation-for="State"></span>
+
+    </div>
+
+
+    <div>
+        <label asp-for="ActivityLevel">Activity Level</label>
+        <select asp-for="ActivityLevel" asp-items="Survey.activityLevel"></select>
+        <span asp-validation-for="ActivityLevel"></span>
+
+    </div>
+
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+
+
+</form>
+

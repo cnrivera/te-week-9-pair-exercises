@@ -1,0 +1,23 @@
+﻿@model IList<SurveyResult>
+@{
+    ViewData["Title"] = "SurveyResults";
+}
+
+<h1>Favorite Parks</h1>
+
+<h2 id="temp">@TempData["msg"]</h2>
+
+<div>
+    @foreach (SurveyResult result in Model)
+    {
+        if (result.Count > 1)
+        {
+            <div>
+            @result.Count
+            @result.ParkName
+        </div>
+        }
+    }
+
+
+</div>
