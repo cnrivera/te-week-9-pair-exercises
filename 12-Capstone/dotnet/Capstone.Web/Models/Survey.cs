@@ -16,7 +16,7 @@ namespace Capstone.Web.Models
         public string ParkCode { get; set; }
 
        
-        [Required, EmailAddress]
+        [Required, EmailAddress (ErrorMessage = "Please enter your email address")]
         public string EmailAddress { get; set; }
 
         [Required]
