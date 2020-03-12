@@ -22,7 +22,7 @@ namespace Capstone.Web.Controllers
             parkDAO = parksDAO;
         }
 
-
+        
         public IActionResult Index() // what does this need to be?
         {
             IList<Park> parks = parkDAO.GetAllParks();
@@ -32,8 +32,7 @@ namespace Capstone.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public IActionResult NewSurvey(Survey sendSurvey)
+        public IActionResult Index (Survey sendSurvey)
         {
             if (!ModelState.IsValid)
             {
@@ -42,7 +41,7 @@ namespace Capstone.Web.Controllers
             }
             dao.PostSurveys(sendSurvey);
             TempData["msg"] = "Your survey has been sent!";
-            return RedirectToAction("SurveyResults", "Survey");
+            return RedirectToAction("SurveyResults","Survey");
         }
 
         public IActionResult SurveyResults()

@@ -12,17 +12,17 @@ namespace Capstone.Web.Models
 
         public int SurveyId { get; set; }
 
-        [Required]
+        
         public string ParkCode { get; set; }
 
        
-        [Required, EmailAddress (ErrorMessage = "Please enter your email address")]
+        [Required, EmailAddress(ErrorMessage = "Please enter your email address")]
         public string EmailAddress { get; set; }
 
-        [Required]
+        
         public string State { get; set; }
 
-        [Required]
+        
         public string ActivityLevel { get; set; }
 
         public static List<SelectListItem> activityLevel = new List<SelectListItem>()

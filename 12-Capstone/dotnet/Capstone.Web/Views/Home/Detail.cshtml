@@ -12,28 +12,66 @@
         <h2>@Model.ParkName</h2>
         <p>@Model.State</p>
         <p>@Model.ParkDescription</p>
+        <label asp-for="Acreage"></label>
         <p>@Model.Acreage</p>
+        <label asp-for="ElevationInFeet"></label>
         <p>@Model.ElevationInFeet</p>
+        <label asp-for="MilesOfTrail"></label>
         <p>@Model.MilesOfTrail</p>
+        <label asp-for="NumberOfCampsites"></label>
         <p>@Model.NumberOfCampsites</p>
+        <label asp-for="Climate"></label>
         <p>@Model.Climate</p>
+        <label asp-for="YearFounded"></label>
         <p>@Model.YearFounded</p>
+        <label asp-for="AnnualVisitorCount"></label>
         <p>@Model.AnnualVisitorCount</p>
         <p>@Model.InspirationalQuote</p>
         <p>@Model.InspirationalQuoteSource</p>
+        <label asp-for="EntryFee"></label>
         <p>@Model.EntryFee</p>
+        <label asp-for="NumberOfAnimalSpecies"></label>
         <p>@Model.NumberOfAnimalSpecies</p>
 
 
 
     </div>
-
+        
     <div>
         @foreach (var detail in Model.WeatherList)
         {
-            <p>@detail.FiveDayForecastValue</p>
+            @switch (detail.Forecast)
+            {
+                case "snow":
+                    <img src="~/images/snow.png" />
+                    break;
+
+                case "rain":
+                    <img src="~/images/rain.png" />
+                    break;
+
+                case "thunderstorms":
+                    <img src="~/images/thunderstorms.png" />
+                    break;
+
+                case "sunny":
+                    <img src="~/images/sunny.png" />
+                    break;
+
+                case "partly cloudy":
+                    <img src="~/images/partlyCloudy.png" />
+                    break;
+
+                case "cloudy":
+                    <img src="~/images/cloudy.png" />
+                    break;
+            }
+            <p></p>
+            <label>Low</label>
             <p>@detail.DisplayLow</p>
+            <label>High</label>
             <p>@detail.DisplayHigh</p>
+            <label>Forecast</label>
             <p>@detail.Forecast</p>
 
             @switch (detail.Forecast)
@@ -55,6 +93,7 @@
                     break;
 
             }
+
 
             if (detail.High > 75)
             {

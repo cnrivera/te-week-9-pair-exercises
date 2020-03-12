@@ -52,7 +52,7 @@ namespace Capstone.Web.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT count(survey_result.parkCode) AS 'count', park.parkName FROM survey_result JOIN park on park.parkCode = survey_result.parkCode GROUP BY park.parkName", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT count(survey_result.parkCode) AS 'count', park.parkName, park.parkCode FROM survey_result JOIN park on park.parkCode = survey_result.parkCode GROUP BY park.parkName, park.parkCode", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -77,7 +77,8 @@ namespace Capstone.Web.DAL
             return new SurveyResult()
             {
                 ParkName = Convert.ToString(reader["parkName"]),
-                Count = Convert.ToInt32(reader["count"])
+                Count = Convert.ToInt32(reader["count"]),
+                ParkCode = Convert.ToString(reader["parkCode"]),
             };
         }
 
