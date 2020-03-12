@@ -18,7 +18,7 @@ namespace Capstone.Web.Models
 
         public string Forecast { get; set; }
 
-        public bool IsFarenheit { get; set; } = true;
+        public bool IsFarenheit { get; set; }
 
         public int DisplayLow
         {

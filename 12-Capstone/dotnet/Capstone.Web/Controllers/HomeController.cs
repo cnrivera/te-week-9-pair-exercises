@@ -22,7 +22,6 @@ namespace Capstone.Web.Controllers
             
         }
 
-
         [HttpGet]
         public IActionResult Index()
         {
@@ -37,13 +36,17 @@ namespace Capstone.Web.Controllers
 
             bool isFarenheit = HttpContext.Session.Get<bool>("isFarenheit");
 
-            if(isFarenheit == false)
+            if (HttpContext.Session.Keys.Contains("isFarenheit") == false)
             {
+                HttpContext.Session.Set("isFarenheit", true);
+            }
+
+            
                 foreach(Weather w in detail.WeatherList)
                 {
-                    w.IsFarenheit = false;
+                    w.IsFarenheit = HttpContext.Session.Get<bool>("isFarenheit");
                 }
-            }
+            
 
             return View(detail);
         }
