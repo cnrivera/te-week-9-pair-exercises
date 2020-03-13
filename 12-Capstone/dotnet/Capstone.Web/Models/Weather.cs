@@ -13,20 +13,35 @@ namespace Capstone.Web.Models
 
         public int FiveDayForecastValue { get; set; }
         
-        public int Low { get; set; }
+        //public int Low { get; set; }
 
-        public int High { get; set; }
+        //public int High { get; set; }
         [Display(Name ="Forecast")]
         public string Forecast { get; set; }
 
         public bool IsFarenheit { get; set; }
-        [Display(Name ="Low")]
+        
+
+        public int TemperatureLow { get; set; }
+
+        public int TemperatureHigh { get; set; }
+
+        public string Summary { get; set; }
+
+        //public Weather (float temperatureLow, float temperatureHigh, string icon, string summary)
+        //{
+        //    TemperatureLow = temperatureLow;
+        //    TemperatureHigh = temperatureHigh;
+        //    Icon = icon;
+        //    Summary = summary;
+        //}
+        [Display(Name = "Low")]
         public string DisplayLow
         {
             get
             {
-                int fNum = Low;
-                int cNum = (int)((Low-32) / 1.8);
+                float fNum = TemperatureLow;
+                float cNum = (int)((TemperatureLow - 32) / 1.8);
                 if (IsFarenheit)
                 {
                     return $"{fNum} F";
@@ -44,8 +59,8 @@ namespace Capstone.Web.Models
         {
             get
             {
-                int fNum = High;
-                int cNum = (int)((High - 32) / 1.8);
+                float fNum = TemperatureHigh;
+                float cNum = (int)((TemperatureHigh - 32) / 1.8);
                 if (IsFarenheit)
                 {
                     return $"{fNum} F";

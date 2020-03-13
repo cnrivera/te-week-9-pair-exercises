@@ -58,8 +58,8 @@
                     <img src="~/images/sunny.png" />
                     break;
 
-                case "partly cloudy":
-                    <img src="~/images/partlyCloudy.png" />
+                case "partly-cloudy-day":
+                    <img src="~/images/partly-cloudy-day.png" />
                     break;
 
                 case "cloudy":
@@ -95,15 +95,15 @@
             }
 
 
-            if (detail.High > 75)
+            if (detail.TemperatureHigh > 75)
             {
                 <p>Bring an extra gallon of water.</p>
             }
-            else if (detail.High - detail.Low == 20)
+            else if (detail.TemperatureHigh - detail.TemperatureLow == 20)
             {
                 <p>Wear breathable layers.</p>
             }
-            else if (detail.Low < 20)
+            else if (detail.TemperatureLow < 20)
             {
                 <p>Dangerously low temperatures. Be cautious and stay warm.</p>
             }

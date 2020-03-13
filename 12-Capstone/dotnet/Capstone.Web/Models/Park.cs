@@ -38,7 +38,11 @@ namespace Capstone.Web.Models
         [Display(Name = "Number of Animal Species")]
         public int NumberOfAnimalSpecies { get; set; }
 
-        public IList<Weather> WeatherList { get; set; }
+        public decimal Latitude { get; set; }
+
+        public decimal Longitude { get; set; }
+
+        public IList<Weather> WeatherList { get; set; } = new List<Weather>(); 
 
      
 

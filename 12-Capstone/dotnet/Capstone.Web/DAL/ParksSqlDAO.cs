@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Capstone.Web.DAL
 {
     public class ParksSqlDAO : IParksDAO
-    { 
+    {
         private readonly string connectionString;
 
         public ParksSqlDAO(string connectionString)
@@ -16,7 +16,7 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
-    
+
         public IList<Park> GetAllParks()
         {
             IList<Park> parks = new List<Park>();
@@ -32,7 +32,7 @@ namespace Capstone.Web.DAL
                     while (reader.Read())
                     {
                         Park park = new Park()
-            {
+                        {
                             ParkCode = Convert.ToString(reader["parkCode"]),
                             ParkName = Convert.ToString(reader["parkName"]),
                             State = Convert.ToString(reader["state"]),
@@ -48,9 +48,11 @@ namespace Capstone.Web.DAL
                             ParkDescription = Convert.ToString(reader["parkDescription"]),
                             EntryFee = Convert.ToDecimal(reader["entryFee"]),
                             NumberOfAnimalSpecies = Convert.ToInt32(reader["numberOfAnimalSpecies"]),
+                            Latitude = Convert.ToDecimal(reader["latitude"]),
+                            Longitude = Convert.ToDecimal(reader["longitude"]),
 
                         };
-                        park.WeatherList = GetWeatherForASinglePark(park.ParkCode);
+
                         parks.Add(park);
 
 
@@ -68,43 +70,43 @@ namespace Capstone.Web.DAL
         }
 
 
-        public IList<Weather> GetWeatherForASinglePark(string parkCode)
-        {
-            IList<Weather> weatherList = new List<Weather>();
+        //public IList<Weather> GetWeatherForASinglePark(string parkCode)
+        //{
+        //    IList<Weather> weatherList = new List<Weather>();
 
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM weather Where parkCode = @parkCode", conn);
-                    cmd.Parameters.AddWithValue("@parkCode", parkCode);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    
-                    while (reader.Read())
-                    {
-                        Weather weather = new Weather()
-                        {
-                            ParkCode = Convert.ToString(reader["parkCode"]),
-                            FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
-                            Low = Convert.ToInt32(reader["low"]),
-                            High = Convert.ToInt32(reader["high"]),
-                            Forecast = Convert.ToString(reader["forecast"]),
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
+        //            SqlCommand cmd = new SqlCommand("SELECT * FROM weather Where parkCode = @parkCode", conn);
+        //            cmd.Parameters.AddWithValue("@parkCode", parkCode);
+        //            SqlDataReader reader = cmd.ExecuteReader();
 
-                        };
-                        weatherList.Add(weather);
+        //            while (reader.Read())
+        //            {
+        //                Weather weather = new Weather()
+        //                {
+        //                    ParkCode = Convert.ToString(reader["parkCode"]),
+        //                    FiveDayForecastValue = Convert.ToInt32(reader["fiveDayForecastValue"]),
+        //                    Low = Convert.ToInt32(reader["low"]),
+        //                    High = Convert.ToInt32(reader["high"]),
+        //                    Forecast = Convert.ToString(reader["forecast"]),
+
+        //                };
+        //                weatherList.Add(weather);
 
 
-                    }
-                }
-            }
+        //            }
+        //        }
+        //    }
 
-            catch (SqlException ex) //TO DO add ex message
-            {
-                throw;
-            }
-            return weatherList;
-        }
+        //    catch (SqlException ex) //TO DO add ex message
+        //    {
+        //        throw;
+        //    }
+        //    return weatherList;
+        //}
 
 
         public Park GetPark(string parkCode)
@@ -113,10 +115,10 @@ namespace Capstone.Web.DAL
         }
 
 
-        
 
 
-        
+
+
 
     }
 

@@ -27,7 +27,7 @@ namespace Capstone.Web.DAL
         /// </summary>
         /// <returns></returns>
         ///
-        IList<Weather> GetWeatherForASinglePark(string parkCode);
+        //IList<Weather> GetWeatherForASinglePark(string parkCode);
 
 
 
