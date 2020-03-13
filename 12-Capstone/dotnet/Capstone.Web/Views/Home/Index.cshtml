@@ -8,11 +8,11 @@
 {
 
     <div>
-        <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode"><img src="images/@(park.ParkCode).jpg"></a>
+        <a asp-controller="Home" asp-action="Detail" asp-route-parkCode="@park.ParkCode"><img class="front-page-image" src="images/@(park.ParkCode).jpg"></a>
         <div class="front-page-description">
             <h2>@park.ParkName</h2>
             <p>@park.State</p>
-            <p>@park.ParkDescription</p>
+            <p class="park-description">@park.ParkDescription</p>
         </div>
     </div>
 
