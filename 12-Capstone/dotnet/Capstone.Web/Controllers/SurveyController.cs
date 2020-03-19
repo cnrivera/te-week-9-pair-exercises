@@ -22,21 +22,23 @@ namespace Capstone.Web.Controllers
             parkDAO = parksDAO;
         }
 
-        
-        public IActionResult Index() // what does this need to be?
+        [HttpGet]
+        public IActionResult Index(Survey survey) // what does this need to be?
         {
             IList<Park> parks = parkDAO.GetAllParks();
             ViewData["parkData"] = parks;
-            return View();
+            return View(survey);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index (Survey sendSurvey)
+        public IActionResult PostSurvey(Survey sendSurvey)
         {
             if (!ModelState.IsValid)
             {
-                return View(sendSurvey);
+                IList<Park> parks = parkDAO.GetAllParks();
+                ViewData["parkData"] = parks;
+                return View("Index",sendSurvey);
 
             }
             dao.PostSurveys(sendSurvey);

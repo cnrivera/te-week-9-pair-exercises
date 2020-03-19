@@ -34,7 +34,7 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
         
-        //Needed to get the detail for an individual park and return it to the detail View - Get's a park to reference and request the parks weather and forcast using the API DarkSky.
+        //Needed to get the detail for an individual park and return it to the detail View - Get's a park to reference and request the park's weather and forcast using the API DarkSky.
         [HttpGet]
         public async Task<IActionResult> Detail(string parkCode)
         {
