@@ -1,5 +1,5 @@
 ﻿@model Survey
-@{
+@{ @* Needed a way to bring in the data for parks so the user can choose from a list which park they would like to leave a review for.*@
     ViewData["Title"] = "Index";
     IList<Park> parkData = (IList<Park>)ViewData["parkData"];
 

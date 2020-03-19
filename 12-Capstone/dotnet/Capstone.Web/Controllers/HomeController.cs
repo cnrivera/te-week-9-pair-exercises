@@ -16,6 +16,7 @@ namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
+        //Needed to connect to the database interface - Dependency injection using SQL database connection.
         private IParksDAO parkDAO;
 
         public HomeController(IParksDAO parkDAO)
@@ -25,6 +26,7 @@ namespace Capstone.Web.Controllers
             
         }
 
+        //Gets all parks and displays them to the index View.
         [HttpGet]
         public IActionResult Index()
         {
@@ -32,6 +34,7 @@ namespace Capstone.Web.Controllers
             return View(parks);
         }
         
+        //Needed to get the detail for an individual park and return it to the detail View - Get's a park to reference and request the parks weather and forcast using the API DarkSky.
         [HttpGet]
         public async Task<IActionResult> Detail(string parkCode)
         {
@@ -43,7 +46,7 @@ namespace Capstone.Web.Controllers
                 string latitude = detail.Latitude.ToString();
                 string longitude = detail.Longitude.ToString();
                 client.BaseAddress = new Uri("https://api.darksky.net/forecast/c68734a812ca6301d221b45dcbb39281/");
-                //HTTP GET
+                
                 var responseTask = client.GetAsync(latitude + "," + longitude + "?exclude=currently,minutely,hourly,alerts,flags");
                 responseTask.Wait();
 
@@ -85,6 +88,7 @@ namespace Capstone.Web.Controllers
         }
 
 
+        //Needed a way to hold the session of a user to give an option to convert from Farenheit to Celsius and allow the user to switch it back.
         [HttpPost]
         public IActionResult SwitchTemperatureType(string parkCode)
         {

@@ -9,6 +9,7 @@ namespace Capstone.Web.DAL
 {
     public class ParksSqlDAO : IParksDAO
     {
+        //Injects the connection to the SQL database.
         private readonly string connectionString;
 
         public ParksSqlDAO(string connectionString)
@@ -16,7 +17,7 @@ namespace Capstone.Web.DAL
             this.connectionString = connectionString;
         }
 
-
+        // Needed away to bring in, from the SQL database, all parks as objects and contain them in a list.
         public IList<Park> GetAllParks()
         {
             IList<Park> parks = new List<Park>();
@@ -60,7 +61,7 @@ namespace Capstone.Web.DAL
                 }
             }
 
-            catch (SqlException ex) //TO DO add ex message
+            catch (SqlException ex) 
             {
                 throw;
             }
@@ -70,6 +71,14 @@ namespace Capstone.Web.DAL
         }
 
 
+        //Needed a way to get a single park from the SQL database as an object.
+        public Park GetPark(string parkCode)
+        {
+            return GetAllParks().FirstOrDefault(p => p.ParkCode == parkCode);
+        }
+
+
+        // Did not need this code. Using API instead. Left here in case we need it.
         //public IList<Weather> GetWeatherForASinglePark(string parkCode)
         //{
         //    IList<Weather> weatherList = new List<Weather>();
@@ -107,12 +116,6 @@ namespace Capstone.Web.DAL
         //    }
         //    return weatherList;
         //}
-
-
-        public Park GetPark(string parkCode)
-        {
-            return GetAllParks().FirstOrDefault(p => p.ParkCode == parkCode);
-        }
 
 
 

@@ -13,9 +13,6 @@ namespace Capstone.Web.Models
 
         public int FiveDayForecastValue { get; set; }
         
-        //public int Low { get; set; }
-
-        //public int High { get; set; }
         [Display(Name ="Forecast")]
         public string Forecast { get; set; }
 
@@ -28,13 +25,7 @@ namespace Capstone.Web.Models
 
         public string Summary { get; set; }
 
-        //public Weather (float temperatureLow, float temperatureHigh, string icon, string summary)
-        //{
-        //    TemperatureLow = temperatureLow;
-        //    TemperatureHigh = temperatureHigh;
-        //    Icon = icon;
-        //    Summary = summary;
-        //}
+       
         [Display(Name = "Low")]
         public string DisplayLow
         {

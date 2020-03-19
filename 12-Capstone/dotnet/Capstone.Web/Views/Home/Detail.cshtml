@@ -4,7 +4,7 @@
     ViewData["Title"] = "Detail";
 
 }
-
+@* Needed a way to display an individual park object's details from the SQL database.*@
 <div>
     <img src="~/images/@(Model.ParkCode).jpg">
 
@@ -36,7 +36,7 @@
 
 
     </div>
-        
+      @* Needed a way to display the five day weather forcast as well as the current weather from the API.*@  
     <div>
         @foreach (var detail in Model.WeatherList)
         {
@@ -115,7 +115,7 @@
 
     <div>
 
-
+        @*This allows the user to sitch between Fahrenheit and Celsius*@
 
         <form asp-action="SwitchTemperatureType" asp-controller="Home" method="post">
             <input type="hidden" value="@Model.ParkCode" name="parkCode" />

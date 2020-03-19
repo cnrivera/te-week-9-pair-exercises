@@ -55,10 +55,16 @@ nav {
 }
 
 /* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     /* Hide captions */
     .carousel-caption {
         display: none;
     }
 }
 
+@media only screen and (min-width: 900px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

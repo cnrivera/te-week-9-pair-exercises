@@ -22,6 +22,8 @@ namespace Capstone.Web.DAL
         /// 
         Park GetPark(string ParkCode);
 
+
+        //This code was used before API was established.
         /// <summary>
         /// Gets five day forecast for all parks.
         /// </summary>
